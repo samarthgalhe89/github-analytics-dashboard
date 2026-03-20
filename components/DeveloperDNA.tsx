@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { DeveloperDNA } from "@/lib/ai";
-import { Sparkles, CheckCircle2, TrendingUp, Bot } from "lucide-react";
+import { Sparkles, CheckCircle2, TrendingUp, Bot, Brain, Rocket } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 
@@ -60,33 +60,27 @@ export default function DeveloperDNAComponent({ username }: DeveloperDNAProps) {
 
   if (loading) {
     return (
-      <Card className="w-full animate-pulse border-border/50 bg-background/50 backdrop-blur supports-[backdrop-filter]:bg-background/50">
+      <Card className="w-full animate-pulse border-border bg-white shadow-sm">
         <CardContent className="p-6 lg:p-8 flex flex-col gap-8">
-          {/* Top Section Skeleton */}
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <Skeleton className="w-8 h-8 rounded-full" />
-              <Skeleton className="h-6 w-1/4" />
+              <Skeleton className="w-8 h-8 rounded-lg" />
+              <Skeleton className="h-6 w-48" />
             </div>
             <div className="space-y-3">
               <Skeleton className="h-4 w-full" />
-              <Skeleton className="h-4 w-full" />
-              <Skeleton className="h-4 w-3/4" />
+              <Skeleton className="h-4 w-5/6" />
             </div>
           </div>
-
           <div className="h-px w-full bg-border/50" />
-
-          {/* Bottom Sections Skeleton */}
-          <div className="flex flex-col gap-8">
-            <div className="space-y-4">
-              <Skeleton className="h-5 w-1/4 mb-2" />
-              <Skeleton className="h-16 w-full" />
-            </div>
-            <div className="space-y-4">
-              <Skeleton className="h-5 w-1/4 mb-2" />
-              <Skeleton className="h-16 w-full" />
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[1, 2, 3, 4].map((i) => (
+              <div key={i} className="space-y-3">
+                <Skeleton className="h-4 w-24 mb-4" />
+                <Skeleton className="h-12 w-full rounded-xl" />
+                <Skeleton className="h-12 w-full rounded-xl" />
+              </div>
+            ))}
           </div>
         </CardContent>
       </Card>
@@ -99,7 +93,7 @@ export default function DeveloperDNAComponent({ username }: DeveloperDNAProps) {
         <CardContent className="p-6">
           <Bot className="w-6 h-6 text-destructive mx-auto mb-2" />
           <p className="text-sm text-destructive font-medium">
-            AI analysis temporarily unavailable. Ensure GEMINI_API_KEY is configured.
+            AI analysis temporarily unavailable. Check GEMINI_API_KEY.
           </p>
         </CardContent>
       </Card>
@@ -107,68 +101,100 @@ export default function DeveloperDNAComponent({ username }: DeveloperDNAProps) {
   }
 
   return (
-    <Card className="p-0 overflow-hidden relative group animate-fade-in w-full border-border/50 bg-background/50 backdrop-blur supports-[backdrop-filter]:bg-background/50">
-      {/* Decorative Gradient Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-accent/10 via-background to-background opacity-50 z-0 pointer-events-none" />
-      
-      <CardContent className="relative z-10 p-6 lg:p-8">
-        <div className="flex flex-col gap-8">
+    <Card className="p-0 overflow-hidden relative group animate-fade-in w-full border-border bg-white shadow-sm">
+      <CardContent className="relative z-10 p-6 lg:p-10">
+        <div className="flex flex-col gap-10">
           
           {/* Top Section: Archetype & Summary */}
-          <div className="max-w-4xl">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-teal-500 flex items-center justify-center shadow-lg shadow-blue-500/20 shrink-0">
-                <Sparkles className="w-4 h-4 text-white" />
+          <div className="max-w-5xl">
+            <div className="flex items-center gap-4 mb-8">
+              <div className="w-12 h-12 rounded-2xl bg-slate-900 flex items-center justify-center shadow-lg shadow-slate-900/20 shrink-0">
+                <Sparkles className="w-6 h-6 text-white" />
               </div>
-              <h3 className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-teal-400">
+              <h3 className="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight">
                 {dna.archetype}
               </h3>
             </div>
 
-            <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+            {/* Core Personality Tags */}
+            {dna.personality && dna.personality.length > 0 && (
+              <div className="mb-8">
+                <h4 className="text-[12px] font-extrabold text-slate-800 uppercase tracking-[0.2em] flex items-center gap-2 mb-4">
+                  <Brain className="w-4 h-4" /> Core Personality
+                </h4>
+                <div className="flex flex-wrap gap-2.5">
+                  {dna.personality?.map((trait, i) => (
+                    <span key={i} className="px-5 py-2 bg-slate-50 text-slate-800 text-[13px] font-semibold rounded-full border border-slate-200 shadow-sm">
+                      {trait}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            <p className="text-base text-muted-foreground leading-relaxed font-normal">
               {dna.summary}
             </p>
           </div>
 
-          {/* Divider */}
-          <div className="h-px w-full bg-gradient-to-r from-border/50 via-border to-border/50" />
+          <div className="h-px w-full bg-border" />
 
-          {/* Bottom Sections: Strengths & Growth Areas (Purely Vertical) */}
-          <div className="flex flex-col gap-8">
-            <div className="space-y-4">
-              <h4 className="text-xs font-semibold text-foreground uppercase tracking-wider flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-success" /> Core Strengths
+          {/* Bottom Grid: 2 Sections */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+            {/* Strengths */}
+            <div className="space-y-5">
+              <h4 className="text-[11px] font-bold text-emerald-600 uppercase tracking-[0.2em] flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4" /> Best Strengths
               </h4>
-              <ul className="flex flex-col gap-3">
+              <ul className="space-y-2.5">
                 {dna.strengths.map((strength, i) => (
-                  <li key={i} className="text-sm text-muted-foreground flex items-start gap-3 bg-secondary/30 p-4 rounded-xl border border-border/50 hover:border-success/30 transition-colors">
-                    <span className="text-success mt-1 shrink-0">•</span>
-                    <span>{strength}</span>
+                  <li key={i} className="text-xs text-muted-foreground flex items-start gap-2.5 font-medium leading-snug">
+                    <span className="text-emerald-500 shrink-0">•</span>
+                    {strength}
                   </li>
                 ))}
               </ul>
             </div>
 
-            <div className="space-y-4">
-              <h4 className="text-xs font-semibold text-foreground uppercase tracking-wider flex items-center gap-2">
-                <TrendingUp className="w-4 h-4 text-warning" /> Growth Areas
+            {/* Growth Areas */}
+            <div className="space-y-5">
+              <h4 className="text-[11px] font-bold text-amber-600 uppercase tracking-[0.2em] flex items-center gap-2">
+                <TrendingUp className="w-4 h-4" /> Focus Areas
               </h4>
-              <ul className="flex flex-col gap-3">
+              <ul className="space-y-2.5">
                 {dna.growthAreas.map((area, i) => (
-                  <li key={i} className="text-sm text-muted-foreground flex items-start gap-3 bg-secondary/30 p-4 rounded-xl border border-border/50 hover:border-warning/30 transition-colors">
-                    <span className="text-warning mt-1 shrink-0">•</span>
-                    <span>{area}</span>
+                  <li key={i} className="text-xs text-muted-foreground flex items-start gap-2.5 font-medium leading-snug">
+                    <span className="text-amber-500 shrink-0">•</span>
+                    {area}
                   </li>
                 ))}
               </ul>
+            </div>
+
+          </div>
+          
+          <div className="h-px w-full bg-border/60" />
+
+          {/* Career Roadmap (Prominent Separate Section) */}
+          <div className="w-full mt-2">
+            <h4 className="text-sm font-bold text-blue-600 uppercase tracking-[0.2em] flex items-center gap-3 mb-6">
+              <Rocket className="w-5 h-5" /> Career Roadmap
+            </h4>
+            <div className="flex flex-col gap-4">
+              {dna.careerRoadmap?.map((tech, i) => (
+                <div key={i} className="flex items-start gap-4 p-5 bg-blue-50/10 rounded-xl border border-blue-100 shadow-sm hover:shadow-md hover:border-blue-200 transition-all">
+                  <span className="text-blue-500 shrink-0 font-medium text-lg mt-[-2px]">→</span>
+                  <p className="text-[15px] xl:text-base text-slate-600 font-medium leading-relaxed">
+                    {tech}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
           
         </div>
       </CardContent>
-      
-      {/* Subtle shine effect on hover */}
-      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 z-0 pointer-events-none bg-gradient-to-tr from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full" style={{ transition: 'all 1.5s ease' }} />
     </Card>
   );
 }

@@ -80,23 +80,11 @@ export default function LanguageChart({ data }: LanguageChartProps) {
                   />
                 ))}
               </Pie>
-              <text x="50%" y="50%" textAnchor="middle" dominantBaseline="middle">
-                <tspan
-                  x="50%"
-                  dy="-0.2em"
-                  className="text-4xl font-extrabold text-foreground"
-                  fill="currentColor"
-                >
-                  {data.length}
-                </tspan>
-                <tspan
-                  x="50%"
-                  dy="1.5em"
-                  className="text-[10px] font-bold text-muted-foreground tracking-widest uppercase"
-                  fill="currentColor"
-                >
-                  TOTAL SOURCES
-                </tspan>
+              <text x="50%" y="45%" textAnchor="middle" dominantBaseline="middle" className="text-4xl font-extrabold text-foreground" fill="currentColor">
+                {data.length}
+              </text>
+              <text x="50%" y="60%" textAnchor="middle" dominantBaseline="middle" className="text-[10px] font-bold text-muted-foreground tracking-widest uppercase" fill="currentColor">
+                TOTAL SOURCES
               </text>
               <Tooltip content={<CustomTooltip />} />
             </PieChart>

@@ -14,6 +14,7 @@ import { GitHubUser, GitHubRepo } from "@/lib/github";
 import { RepoStats, LanguageStat } from "@/lib/analytics";
 import { RepoHealth } from "@/lib/scoring";
 import { ActivityTimelinePoint } from "@/lib/activity";
+import { useGlobalState } from "@/components/GlobalStateProvider";
 
 interface DashboardData {
   user: GitHubUser;
@@ -27,8 +28,10 @@ interface DashboardData {
 export default function DashboardPage() {
   const { status } = useSession();
   const router = useRouter();
-  const [data, setData] = useState<DashboardData | null>(null);
-  const [loading, setLoading] = useState(true);
+  const { dashboardData: data, setDashboardData: setData } = useGlobalState();
+  
+  // If we already have data in global state, start loading as false
+  const [loading, setLoading] = useState(!data);
   const [error, setError] = useState<string | null>(null);
 
   // Redirect to homepage if not authenticated
@@ -41,6 +44,7 @@ export default function DashboardPage() {
   // Fetch GitHub data when session is available
   useEffect(() => {
     if (status !== "authenticated") return;
+    if (data) return; // Skip fetch if we already have global state data!
 
     const fetchData = async () => {
       try {

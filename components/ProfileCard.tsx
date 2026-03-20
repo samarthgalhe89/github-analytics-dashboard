@@ -1,5 +1,6 @@
 import { GitHubUser } from "@/lib/github";
-import { FolderGit2, Users, UserCheck, MapPin, Building2, CalendarDays, ExternalLink } from "lucide-react";
+import { FolderGit2, Users, UserCheck, MapPin, Building2, CalendarDays, ExternalLink, Share } from "lucide-react";
+import { toast } from "sonner"; // Assuming sonner is used for toasts, otherwise I'll use a fallback
 import { Card, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
@@ -18,6 +19,15 @@ export default function ProfileCard({ user }: ProfileCardProps) {
     { label: "Followers", value: user.followers, icon: <Users className="w-5 h-5 text-accent" /> },
     { label: "Following", value: user.following, icon: <UserCheck className="w-5 h-5 text-accent" /> },
   ];
+
+  const handleShare = () => {
+    const url = window.location.href;
+    navigator.clipboard.writeText(url);
+    toast.success("Profile link copied to clipboard!", {
+      description: "You can now share it with others.",
+      icon: <Share className="w-4 h-4" />,
+    });
+  };
 
   return (
     <Card className="w-full animate-fade-in border-border/50 bg-background/50 backdrop-blur supports-[backdrop-filter]:bg-background/50">
@@ -92,22 +102,34 @@ export default function ProfileCard({ user }: ProfileCardProps) {
             </div>
           </div>
 
-          {/* Right Side: Stats bar */}
-          <div className="flex items-center gap-6 lg:gap-10 pt-6 lg:pt-0 border-t lg:border-t-0 lg:border-l border-border lg:pl-10 w-full lg:w-auto justify-center sm:justify-start">
-            {stats.map((s) => (
-              <div
-                key={s.label}
-                className="text-center group"
-              >
-                <div className="flex items-center justify-center gap-2 mb-1">
-                  <span className="group-hover:scale-110 transition-transform">{s.icon}</span>
-                  <p className="text-2xl font-bold text-foreground">
-                    {s.value.toLocaleString()}
-                  </p>
+          {/* Right Side: Stats bar + Share */}
+          <div className="flex flex-col sm:flex-row items-center gap-6 lg:gap-10 pt-6 lg:pt-0 border-t lg:border-t-0 lg:border-l border-border lg:pl-10 w-full lg:w-auto justify-center sm:justify-start">
+            <div className="flex items-center gap-6 lg:gap-10">
+              {stats.map((s) => (
+                <div
+                  key={s.label}
+                  className="text-center group"
+                >
+                  <div className="flex items-center justify-center gap-2 mb-1">
+                    <span className="group-hover:scale-110 transition-transform">{s.icon}</span>
+                    <p className="text-2xl font-bold text-foreground">
+                      {s.value.toLocaleString()}
+                    </p>
+                  </div>
+                  <p className="text-xs text-muted-foreground uppercase tracking-wider font-medium">{s.label}</p>
                 </div>
-                <p className="text-xs text-muted-foreground uppercase tracking-wider font-medium">{s.label}</p>
-              </div>
-            ))}
+              ))}
+            </div>
+            
+            <div className="h-10 w-px bg-border hidden sm:block mx-2" />
+            
+            <button
+              onClick={handleShare}
+              className="flex items-center gap-2 px-4 py-2 rounded-xl bg-primary text-primary-foreground text-sm font-bold shadow-lg shadow-primary/20 hover:scale-105 active:scale-95 transition-all"
+            >
+              <Share className="w-4 h-4" />
+              Share Profile
+            </button>
           </div>
 
         </div>

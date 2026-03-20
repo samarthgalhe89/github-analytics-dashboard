@@ -4,6 +4,7 @@ import { useSession } from "next-auth/react";
 import { useRouter, usePathname } from "next/navigation";
 import { useEffect } from "react";
 import Sidebar from "@/components/Sidebar";
+import { GlobalStateProvider } from "@/components/GlobalStateProvider";
 
 export default function DashboardLayout({
   children,
@@ -76,7 +77,9 @@ export default function DashboardLayout({
           </div>
         </header>
 
-        <main className="flex-1">{children}</main>
+        <GlobalStateProvider>
+          <main className="flex-1">{children}</main>
+        </GlobalStateProvider>
       </div>
     </div>
   );
