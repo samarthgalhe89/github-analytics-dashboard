@@ -51,7 +51,7 @@ export default function DashboardLayout({
               height={24}
               className="w-6 h-6 object-contain"
             />
-            <span className="text-sm font-bold gradient-text">DevDNA</span>
+            <span className="text-sm font-bold gradient-text">DevTrace</span>
           </div>
           <div className="flex items-center gap-1.5 overflow-x-auto w-full pb-1 scrollbar-hide sm:pb-0">
             <a
