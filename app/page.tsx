@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { Github, ChevronRight, BarChart3, Dna, HeartPulse, Bot } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import DevTraceLogo from "@/components/DevTraceLogo";
 
 const features = [
   {
@@ -57,7 +58,7 @@ export default function HomePage() {
         {/* Highlighted App Name */}
         <div className="animate-fade-in flex flex-col items-center gap-4 mb-10">
           <div className="w-16 h-16 flex items-center justify-center">
-            <img src="/logo.svg" alt="Logo" width={64} height={64} className="w-full h-full object-contain" />
+            <DevTraceLogo size={56} animated />
           </div>
           <span className="text-3xl font-black tracking-tight text-foreground gradient-text">DevTrace</span>
         </div>

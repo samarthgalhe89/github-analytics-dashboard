@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useSession, signOut } from "next-auth/react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import DevTraceLogo from "@/components/DevTraceLogo";
 
 const navItems = [
   {
@@ -89,13 +90,7 @@ export default function Sidebar() {
       <div className="px-6 py-6 border-b border-border">
         <Link href="/dashboard" className="flex items-center gap-2">
           <div className="w-10 h-10 flex items-center justify-center shrink-0">
-            <img
-              src="/logo.svg"
-              alt="DevTrace Logo"
-              width={40}
-              height={40}
-              className="w-full h-full object-contain"
-            />
+            <DevTraceLogo size={36} animated />
           </div>
           <div className="flex flex-col">
             <span className="text-xl font-black gradient-text leading-none tracking-tight">
