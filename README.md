@@ -1,62 +1,65 @@
+<div align="center">
+  
 # 🧠 DevTrace
 
-> **Trace your developer journey** — Translating raw GitHub data into a visual exploration of your coding footprint, repository health, and engineering legacy.
+**Trace your developer journey**
+*Translating raw GitHub data into a visual exploration of your coding footprint, repo health, and engineering legacy.*
+
+[![Next.js](https://img.shields.io/badge/Next.js-16-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-19-blue?style=for-the-badge&logo=react)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-CSS_v4-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
+
+</div>
 
 ---
 
-## ✨ Overview
+## ⚡ What is DevTrace?
 
-Forget the standard vanity metrics. **DevTrace** does not care how many green squares you have. 
+Forget standard vanity metrics. We don't care how many green squares you have. 
 
-Instead, it functions as a forensic-level intelligence engine for your GitHub profile. By connecting via OAuth and ingesting your data from the GitHub REST API, DevTrace bypasses the noise to decode your actual engineering habits. We transform raw commit histories, language densities, and engagement signals into a high-octane visual autopsy of your open-source footprint.
+**DevTrace is a forensic-level intelligence engine for your GitHub profile.** 
 
-From predicting your specific engineering archetype (your "Developer DNA") to playfully roasting your abandoned side-projects, DevTrace leverages ultra-fast AI models to provide deep, unfiltered self-reflection. It’s part analytics platform, part developer polygraph—designed to help you genuinely understand the legacy you are leaving behind in code.
+We connect to your GitHub, bypass the noise, and transform raw git history into a high-octane visual autopsy using AI. 
 
----
-
-## 🚀 Key Features
-
-### 🔐 Secure GitHub OAuth Authentication
-Seamless, one-click login powered by **NextAuth.js** with GitHub as the OAuth provider. No passwords, no friction — just a secure token-based session that grants scoped access to your GitHub data.
-
-### 📊 Profile Analytics
-A deep dive into your GitHub presence at a glance — total repositories, follower and following counts, public contributions, and a timeline of recent activity. Understand your visibility and reach as a developer over time.
-
-### 🧬 Developer DNA
-One of the more unique features: an algorithmic analysis that surfaces your **developer archetype** based on your activity patterns. It measures consistency metrics (how regularly you commit), language diversity (how many technologies you actively use), and synthesizes a profile of your coding identity.
-
-### 🏥 Repository Health Score
-A custom-built scoring engine that evaluates each of your repositories across multiple dimensions — stars, fork count, recency of activity, and engagement signals — to produce a single, at-a-glance **Health Score**. Instantly know which projects are thriving and which have gone dormant.
-
-### 🤖 AI-Powered Insights
-Leveraging the **Groq API & Llama-3**, the dashboard generates dramatic, algorithmic narratives of your GitHub profile. It evaluates your growth trajectory, pits you against rival developers in "Versus Mode," and provides the kind of reflection that raw numbers alone simply can't capture.
-
-### 📈 Beautiful Visualizations
-All data is brought to life through dynamic, interactive charts and graphs built with **Recharts**. From language breakdowns to commit frequency over time, every visualization is designed to be both informative and immediately readable.
-
-### 🎨 Modern Glassmorphism UI
-A sleek, fully responsive interface built with a dark-mode-first philosophy. The design features a custom animated **grid background**, layered **glassmorphism** card components, ambient **glow effects**, and custom CSS animations (`pulse-glow`, `fade-in`) to create an immersive, polished experience.
+### Why use it?
+- 🔮 **Decode your DNA:** What's your "Developer Archetype"?
+- 🔥 **Get Roasted (Lovingly):** AI that ruthlessly judges your abandoned side projects.
+- 📉 **Real Health Scores:** Find out which repos are thriving and which are collecting dust.
 
 ---
 
-## 🛠️ Technology Stack
+## 🚀 Epic Features
 
-| Layer | Technology |
-|---|---|
-| **Framework** | Next.js 16 (App Router) |
-| **UI Library** | React 19 |
-| **Language** | TypeScript |
-| **Authentication** | NextAuth.js v4 (GitHub Provider) |
-| **Styling** | Tailwind CSS v4 + Custom CSS Animations |
-| **Data Visualization** | Recharts |
-| **External APIs** | GitHub REST API, Groq SDK (Llama-3) |
-
----
-
-## 📸 Screenshots
-
-*Coming soon.*
+| Feature | Description |
+| :--- | :--- |
+| **🔐 1-Click OAuth** | Zero passwords. Fast, secure login via *NextAuth.js* & GitHub. |
+| **📊 Deep Analytics** | Total repos, reach, and a complete timeline of your open-source life. |
+| **🧬 Developer DNA** | Algorithmic profiling based on consistency and tech-stack diversity. |
+| **🏥 Repo Health** | Real-time scoring based on stars, forks, and recency of activity. |
+| **🤖 AI Roasts & Rivals** | *Groq + Llama-3* powered narratives and a brutal "Versus Mode" against rival developers. |
+| **🎨 Abyssal Layout** | Premium *Glassmorphism* UI, dark-mode first, with custom CSS `pulse-glow` animations. |
 
 ---
 
-*Built with ☕ and curiosity.*
+## 🛠️ The Gear 
+
+* **Core:** Next.js 16 (App Router), React 19, TypeScript
+* **Styling:** Tailwind CSS v4
+* **Auth:** NextAuth.js (GitHub Provider)
+* **Visuals:** Recharts
+* **Brain:** Groq API (Llama-3), GitHub REST API
+
+---
+
+## 📸 Sneak Peek
+
+<div align="center">
+  <i>(Epic screenshots incoming...)</i>
+</div>
+
+---
+
+<div align="center">
+  <i>Built with ☕, curiosity, and probably way too much dark mode.</i>
+</div>
