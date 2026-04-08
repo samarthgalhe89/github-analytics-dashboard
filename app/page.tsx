@@ -111,7 +111,7 @@ export default function HomePage() {
               <div className="flex items-center gap-3 mb-4">
                 <span className="text-[#58a6ff] font-bold">➜</span>
                 <span className="text-[#79c0ff]">~</span>
-                <span className="text-white">npx devtrace <span className="text-[#ff7b72]">analyze</span> torvalds</span>
+                <span className="text-white">npx devtrace <span className="text-[#ff7b72]">analyze</span> samarthgalhe89</span>
               </div>
               <div className="text-muted-foreground/80 mb-6 flex flex-col gap-1 pl-6 border-l border-white/5">
                 <div>[SYSTEM] Fetching public repositories... <span className="text-green-400">[0.42s]</span></div>
